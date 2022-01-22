@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 
 class Rectangle {
     public:
@@ -59,6 +60,50 @@ void Rectangle::draw() {
     
 }
 
+class Circle {
+    public:
+    Circle();
+    ~Circle();
+    int getRadius();
+    int getCircumference();
+    void setRadius(int radNew);
+    void setCircumf(int rad);
+    int calculateRadius(int circumf);
+    private:
+    int radius;
+    int circumference;
+};
+
+Circle::Circle(){
+    setRadius(2);
+    setCircumf(2);
+}
+
+Circle::~Circle() {
+
+}
+
+int Circle::getRadius() {
+    return radius;
+}
+
+int Circle::getCircumference() {
+    return circumference;
+}
+
+void Circle::setRadius(int radNew) {
+    radius = radNew;
+}
+
+void Circle::setCircumf(int rad) {
+    circumference = 2 * M_PI * rad;
+}
+
+int Circle::calculateRadius(int circumf) {
+    radius = circumf / (M_PI * 2);
+    return radius;
+}
+
 int main () {
     std::cout << "Testing Rectangle" << std::endl;
     Rectangle rect;
@@ -68,4 +113,12 @@ int main () {
     rect.setWidth(4);
     rect.scaleWidth(3);
     rect.scaleLength(2);
+
+    std::cout << "Testing Circle" << std::endl;
+    Circle circle;
+    int radius = circle.getRadius();
+    int circumf = circle.getCircumference();
+    std::cout << "Radius is " << radius << " and Circumference is " << circumf << std::endl;
+
+
 }
