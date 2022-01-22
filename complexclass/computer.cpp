@@ -5,7 +5,7 @@
 Monitor::Monitor() {
     resolution = "1920x1080";
     name = "DELLSE2000";
-    onStatus = 0;
+    onStatus = false;
 }
 
 Monitor::~Monitor() {
@@ -16,16 +16,22 @@ const char* Monitor::getResolution() {
     return resolution;
 }
 
-bool Monitor::getOnStatus() {
-    return onStatus;
-}
-
 void Monitor::turnOnMonitor() {
-    onStatus = 1;
+    onStatus = true;
+    if (onStatus == false) {
+        std::cout << "Error: Could not turn on monitor" << std::endl;
+    }
+    else {
+        std::cout << "Set monitor status to true" << std::endl;
+    }
 }
 
 void Monitor::turnOffMonitor() {
-    onStatus = 0;
+    onStatus = false;
+}
+
+bool Monitor::getOnStatus() {
+    return onStatus;
 }
 
 const char* Monitor::getName() {
@@ -90,7 +96,7 @@ Computer::Computer(Monitor m, CPU c, RAM r) {
     monitor = m;
     cpu = c;
     ram = r;
-    onStatusCmp = 0;
+    onStatusCmp = false;
 }
 
 Computer::~Computer(){
@@ -110,11 +116,15 @@ RAM Computer::getRAM() {
 }
 
 void Computer::turnOn() {
-    onStatusCmp = 1;
+    onStatusCmp = true;
 }
 
 void Computer::turnOff() {
-    onStatusCmp = 0;
+    onStatusCmp = false;
+}
+
+bool Computer::getOnStatus() {
+    return onStatusCmp;
 }
 
 

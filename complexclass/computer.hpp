@@ -51,6 +51,7 @@ class Computer {
     RAM getRAM();
     void turnOn();
     void turnOff();
+    bool getOnStatus();
     private:
     Monitor monitor;
     CPU cpu;
